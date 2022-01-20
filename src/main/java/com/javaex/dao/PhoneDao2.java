@@ -9,29 +9,16 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.PersonVo;
 
 @Repository
-public class PhoneDao {
+public class PhoneDao2 {
 
 	@Autowired
-	private SqlSession sqlSession;
-	
-	
-	public List<PersonVo> getPersonList() {
-		
-		List<PersonVo> personList = sqlSession.selectList("phonebook.selectList");
-		
-		return personList;
-	}
-	
-	
-	
-	/*
+	private DataSource dataSource;
 	
 	// 0. import java.sql.*;
 	private Connection conn = null;
@@ -70,7 +57,7 @@ public class PhoneDao {
 	public int personInsert(PersonVo personVo) {
 		int count = 0;
 		getConnection();
-		sqlSession.
+
 		try {
 
 			// 3. SQL문 준비 / 바인딩 / 실행
@@ -263,5 +250,4 @@ public class PhoneDao {
 		return count;
 	}
 
-	*/
 }
