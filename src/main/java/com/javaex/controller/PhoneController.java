@@ -45,8 +45,7 @@ public class PhoneController {
 	}
 	
 	
-	
-	/*
+
 	@RequestMapping(value="/writeForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
 		System.out.println("PhoneController>writeFrom()");
@@ -54,9 +53,9 @@ public class PhoneController {
 		
 		return "writeForm";
 	}
-	*/
+
 	
-	/*
+	
 	@RequestMapping(value="/write", method= {RequestMethod.GET, RequestMethod.POST} )
 	public String write(@ModelAttribute PersonVo personVo) {
 		System.out.println("PhoneController>write()");
@@ -68,7 +67,18 @@ public class PhoneController {
 		//리다이렉트
 		return "redirect:/phone/list";
 	}
-	*/
+	
+	
+	@RequestMapping(value="/delete", method= {RequestMethod.GET, RequestMethod.POST} )
+	public String delete(@RequestParam("personId") int personId) {
+		System.out.println("PhoneController>delete()");
+		
+		//삭제
+		phoneDao.personDelete(personId);
+		
+		return "redirect:/phone/list";
+	}
+	
 	
 	
 	/*
