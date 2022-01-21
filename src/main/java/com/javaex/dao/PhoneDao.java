@@ -65,6 +65,8 @@ public class PhoneDao {
 		//PersonVo personVo = sqlSession.selectOne("phonebook.selectPerson", personId);
 		Map<String, Object> personMap =  sqlSession.selectOne("phonebook.selectPerson2", personId);
 		System.out.println(personMap.keySet());
+		System.out.println(personMap);
+		
 		
 		System.out.println(personMap.get("PERSON_ID"));
 		System.out.println(personMap.get("NAME"));
@@ -79,8 +81,9 @@ public class PhoneDao {
 		System.out.println("PhoneDao.personUpdate()");
 
 		int count = sqlSession.update("phonebook.update", personVo);
-
+		
 		return count;
+
 	}
 
 }

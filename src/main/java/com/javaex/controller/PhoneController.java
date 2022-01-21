@@ -122,7 +122,7 @@ public class PhoneController {
 		System.out.println(personVo);
 		
 		//수정
-		phoneDao.personUpdate(personVo);
+		int count = phoneDao.personUpdate(personVo);
 		
 		return "redirect:/phone/list";
 	}

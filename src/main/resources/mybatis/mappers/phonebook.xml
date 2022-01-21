@@ -24,7 +24,7 @@
 
 
 	<!-- 전화번호 1명 정보 가져오기 -->
-	<select id="selectPerson" parameterType="int" resultType="com.javaex.vo.PersonVo">
+	<select id="selectPerson" parameterType="int" resultType="PersonVo">
 		<![CDATA[
 			select  person_id,
 	        		name,
@@ -59,7 +59,7 @@
 
 
 	<!-- 전화번호 추가 -->	
-	<insert id="insert" parameterType="com.javaex.vo.PersonVo">
+	<insert id="insert" parameterType="PersonVo">
 		<![CDATA[
 			insert into person
 			values (seq_person_id.nextval, #{name}, #{hp}, #{company})
@@ -80,7 +80,7 @@
 
 
 	<!-- 전화번호 1명 수정하기 -->
-	<select id="update" parameterType="com.javaex.vo.PersonVo">
+	<update id="update" parameterType="PersonVo">
 		<![CDATA[
 			update person  
 			set    name = #{name},
@@ -88,6 +88,6 @@
 	        	   company = #{company}
 			where person_id = #{personId}
 		]]>
-	</select>
+	</update>
 
 </mapper>
