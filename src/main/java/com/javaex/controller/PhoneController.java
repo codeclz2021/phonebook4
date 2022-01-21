@@ -80,30 +80,27 @@ public class PhoneController {
 	}
 	
 	
-	
-	/*
-	@RequestMapping(value="/write", method= {RequestMethod.GET, RequestMethod.POST} )
-	public String write(@RequestParam("name") String name, 
-						@RequestParam("hp") String hp, 
-						@RequestParam("company") String company) {
-		System.out.println("PhoneController>write()");
+	@RequestMapping(value="/updateForm", method= {RequestMethod.GET, RequestMethod.POST} )
+	public String updateForm(@RequestParam("personId") int personId, Model model) {
+		System.out.println("PhoneController>updateForm()");
 		
-		System.out.println(name);
-		System.out.println(hp);
-		System.out.println(company);
-		
-		//저장
-		PersonVo personVo = new PersonVo(name, hp, company);
-		
-		PhoneDao phoneDao = new PhoneDao();
-		phoneDao.personInsert(personVo);
-		
-		//리다이렉트
-		
-		return "";
+		//수정폼
+		PersonVo personVo = phoneDao.getPerson(personId);
+		model.addAttribute("personVo", personVo);
+		return "updateForm";
 	}
-	*/
 	
+	
+	@RequestMapping(value="/update", method= {RequestMethod.GET, RequestMethod.POST} )
+	public String update(@ModelAttribute PersonVo personVo) {
+		System.out.println("PhoneController>update()");
+		System.out.println(personVo);
+		
+		//수정
+		phoneDao.personUpdate(personVo);
+		
+		return "redirect:/phone/list";
+	}
 	
 	
 	

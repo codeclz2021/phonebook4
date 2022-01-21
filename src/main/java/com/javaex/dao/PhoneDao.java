@@ -1,13 +1,6 @@
 package com.javaex.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +30,31 @@ public class PhoneDao {
 		return count;
 	}
 
-	// 사람 삭제
+	// 전화번호 삭제
 	public int personDelete(int personId) {
 		System.out.println("PhoneDao.personDelete()");
-		
+
 		int count = sqlSession.delete("phonebook.delete", personId);
-		
+
 		return count;
 	}
 
-	
+	// 전화번호 1명정보
+	public PersonVo getPerson(int personId) {
+		System.out.println("PhoneDao.getPerson()");
+
+		PersonVo personVo = sqlSession.selectOne("phonebook.selectPerson", personId);
+
+		return personVo;
+	}
+
+	// 전화번호 수정
+	public int personUpdate(PersonVo personVo) {
+		System.out.println("PhoneDao.personUpdate()");
+
+		int count = sqlSession.update("phonebook.update", personVo);
+
+		return count;
+	}
 
 }
